@@ -9,21 +9,19 @@ public class StatsService {
         return sum;
     }
 
+
     public int averageAmountOfMonth(int[] amounts) {
-        int sum = 0;
-        int averageAmount = 0;
-        for (int amount : amounts) {
-            sum += amount;
-            int arithmeticalMean = sum / amounts.length;
-            averageAmount = arithmeticalMean;
-        }
-        return averageAmount;
+        int sum = calculateSum(amounts);
+        int arithmeticalMean = sum / amounts.length;
+        return arithmeticalMean;
     }
+
+
 
     public int monthWithMaxSum(int[] amounts) {
         int maximum = amounts[0];
         int month = 0;
-        for (int i = 0; i < amounts.length; i++) {
+        for (int i=1; i < amounts.length; i++) {
             if (maximum <= amounts[i]) {
                 maximum = amounts[i];
                 month = i + 1;
@@ -35,7 +33,7 @@ public class StatsService {
     public int monthWithMinimumSum(int[] amounts) {
         int minimum = amounts[0];
         int month = 0;
-        for (int i = 0; i < amounts.length; i++) {
+        for (int i = 1; i < amounts.length; i++) {
             if (minimum >= amounts[i]) {
                 minimum = amounts[i];
                 month = i + 1;
@@ -46,17 +44,10 @@ public class StatsService {
     }
 
     public int amountMonthsWithMinAverageSales(int[] amounts) {
-        int sum = 0;
+        int arithmeticalMean = averageAmountOfMonth(amounts);
         int amountMonths = 0;
-        int averageAmount = 0;
-        for (int amount : amounts) {
-            sum += amount;
-            int arithmeticalMean = sum / amounts.length;
-            averageAmount = arithmeticalMean;
-        }
-        int value = amounts[0];
         for (int i = 0; i < amounts.length; i++) {
-            if (averageAmount > amounts[i]) {
+            if (arithmeticalMean > amounts[i]) {
                 amountMonths++;
 
             }
@@ -64,17 +55,10 @@ public class StatsService {
         return amountMonths;
     }
     public int amountMonthsWithMaxAverageSales(int[] amounts) {
-        int sum = 0;
+        int arithmeticalMean = averageAmountOfMonth(amounts);
         int amountMonths = 0;
-        int averageAmount = 0;
-        for (int amount : amounts) {
-            sum += amount;
-            int arithmeticalMean = sum / amounts.length;
-            averageAmount = arithmeticalMean;
-        }
-        int value = amounts[0];
         for (int i = 0; i < amounts.length; i++) {
-            if (averageAmount < amounts[i])  {
+            if (arithmeticalMean < amounts[i])  {
                 amountMonths++;
 
             }
